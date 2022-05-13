@@ -4,7 +4,7 @@ import chalk from "chalk";
 import CryptoJS from "crypto-js";
 import fs from "fs";
 import path from "path";
-import { fund } from "./fund";
+import { fund } from ".";
 
 export async function create() {
   const keyPair = Keypair.generate();
