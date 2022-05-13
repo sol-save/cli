@@ -50,25 +50,30 @@ function handler(command, args) {
                         case "unlock": return [3 /*break*/, 3];
                         case "init": return [3 /*break*/, 5];
                         case "push": return [3 /*break*/, 7];
+                        case "pull": return [3 /*break*/, 9];
                     }
-                    return [3 /*break*/, 9];
+                    return [3 /*break*/, 11];
                 case 1: return [4 /*yield*/, (0, commands_1.fund)()];
                 case 2:
                     _b.sent();
-                    return [3 /*break*/, 9];
+                    return [3 /*break*/, 11];
                 case 3: return [4 /*yield*/, (0, commands_1.unlock)()];
                 case 4:
                     _b.sent();
-                    return [3 /*break*/, 9];
+                    return [3 /*break*/, 11];
                 case 5: return [4 /*yield*/, (0, commands_1.init)()];
                 case 6:
                     _b.sent();
-                    return [3 /*break*/, 9];
+                    return [3 /*break*/, 11];
                 case 7: return [4 /*yield*/, (0, commands_1.push)()];
                 case 8:
                     _b.sent();
-                    return [3 /*break*/, 9];
-                case 9: return [2 /*return*/];
+                    return [3 /*break*/, 11];
+                case 9: return [4 /*yield*/, (0, commands_1.pull)(args[0])];
+                case 10:
+                    _b.sent();
+                    return [3 /*break*/, 11];
+                case 11: return [2 /*return*/];
             }
         });
     });

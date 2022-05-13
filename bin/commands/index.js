@@ -23,10 +23,12 @@ exports.supportedCommands = [
     "fund",
     "unlock",
     "init",
-    "push"
+    "push",
+    "pull",
 ];
 __exportStar(require("./register"), exports);
 __exportStar(require("./unlock"), exports);
 __exportStar(require("./fund"), exports);
 __exportStar(require("./init"), exports);
 __exportStar(require("./push"), exports);
+__exportStar(require("./pull"), exports);
