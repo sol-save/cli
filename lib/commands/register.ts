@@ -85,6 +85,31 @@ export async function create() {
   console.log(chalk.green("Created account!"));
   await fund();
   console.clear();
+  const { name, socials, bio, github } = await inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "Enter your name:",
+    },
+    {
+      type: "input",
+      name: "socials",
+      message: "Enter your social media links (separated by comma):",
+    },
+    {
+      type: "input",
+      name: "bio",
+      message: "Enter your bio:",
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "Enter your github username:",
+    },
+  ]);
+  const avatar = `https://github.com/${github}.png`;
+
+  // TODO; contract integration
   console.log(chalk.green("You're all set!"));
   console.log(chalk.grey("Create a new repo by running:"));
   console.log(chalk.green("`gitsol init`"));
