@@ -94,7 +94,6 @@ function unlock() {
                     return [3 /*break*/, 10];
                 case 8:
                     e_1 = _a.sent();
-                    console.log(e_1);
                     console.log(chalk_1.default.red("Incorrect password."));
                     return [4 /*yield*/, unlock()];
                 case 9: return [2 /*return*/, _a.sent()];
