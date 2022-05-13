@@ -53,7 +53,7 @@ function pull(repo) {
             switch (_a.label) {
                 case 0:
                     console.log(repo);
-                    latestCode = "http://ipfs.fleek.co/ipfs/bafybeihepe5dv2ws3tfkxuuglzxdbsagb4n3z6jzbcrlwny3k6zfcqqame/1652466189432.zip";
+                    latestCode = repo;
                     ts = Date.now();
                     location = path_1.default.join(__dirname, "..", ".gitsol", "".concat(ts, ".zip"));
                     file = fs.createWriteStream(location);
