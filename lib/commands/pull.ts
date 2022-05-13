@@ -7,8 +7,7 @@ import { exec } from "child_process";
 export async function pull(repo: string) {
   console.log(repo);
   // TODO: interact with contract and get latest code.
-  let latestCode =
-    "http://ipfs.fleek.co/ipfs/bafybeiasgsw4bi32sc45a3tpyj653ffmwjfxqddaljibyrgczxs4rnbvby/1652465991272.zip";
+  let latestCode = repo;
   const ts = Date.now();
   const location = path.join(__dirname, "..", ".gitsol", `${ts}.zip`);
   const file = fs.createWriteStream(location);
