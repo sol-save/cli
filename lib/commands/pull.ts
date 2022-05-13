@@ -19,7 +19,7 @@ export async function pull(repo: string) {
       const gitPath = path.resolve("./.git");
       fs.emptyDirSync(gitPath);
       console.log("Unzipping");
-      await fss
+      await fs
         .createReadStream(location)
         .pipe(unzipper.Extract({ path: gitPath }))
         .promise();
@@ -33,5 +33,4 @@ export async function pull(repo: string) {
       });
       fs.unlinkSync(location);
     });
-  });
-}
+  });}
