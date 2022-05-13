@@ -8,7 +8,7 @@ export async function pull(repo: string) {
   console.log(repo);
   // TODO: interact with contract and get latest code.
   let latestCode =
-    "http://ipfs.fleek.co/ipfs/bafybeiav5ysjomtretgwrslicxviuaaczdhhonrwbabcnnkcwlxi55iynq/1652463530777.zip";
+    "http://ipfs.fleek.co/ipfs/bafybeiasgsw4bi32sc45a3tpyj653ffmwjfxqddaljibyrgczxs4rnbvby/1652465991272.zip";
   const ts = Date.now();
   const location = path.join(__dirname, "..", ".gitsol", `${ts}.zip`);
   const file = fs.createWriteStream(location);

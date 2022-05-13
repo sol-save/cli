@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.art = void 0;
+exports.logo = void 0;
 var handler_1 = require("./handler");
 var path_1 = __importDefault(require("path"));
 var chalk_1 = __importDefault(require("chalk"));
@@ -48,14 +48,14 @@ var fs_1 = __importDefault(require("fs"));
 var commands_1 = require("./commands");
 var args = process.argv.slice(2);
 console.clear();
-exports.art = "\n         **   **                     **\n  ***** //   /**                    /**\n **///** ** ******  ******  ******  /**\n/**  /**/**///**/  **////  **////** /**\n//******/**  /**  //***** /**   /** /**\n /////**/**  /**   /////**/**   /** /**\n  ***** /**  //**  ****** //******  ***\n /////  //    //  //////   //////  ///                             \n";
+exports.logo = "\n         **   **                     **\n  ***** //   /**                    /**\n **///** ** ******  ******  ******  /**\n/**  /**/**///**/  **////  **////** /**\n//******/**  /**  //***** /**   /** /**\n /////**/**  /**   /////**/**   /** /**\n  ***** /**  //**  ****** //******  ***\n /////  //    //  //////   //////  ///                             \n";
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var config, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 6, , 7]);
-                console.log(exports.art);
+                console.log(exports.logo);
                 if (!fs_1.default.existsSync(path_1.default.join(__dirname, ".gitsol"))) {
                     fs_1.default.mkdirSync(path_1.default.join(__dirname, ".gitsol"));
                     fs_1.default.writeFileSync(path_1.default.join(__dirname, ".gitsol", "config.json"), JSON.stringify({
