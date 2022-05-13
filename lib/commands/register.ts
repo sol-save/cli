@@ -1,11 +1,18 @@
-import { Keypair } from "@solana/web3.js";
+import { createUser } from "./../helpers/create-user";
+import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import CryptoJS from "crypto-js";
 import fs from "fs";
 import path from "path";
 import { fund } from "./fund";
-
+import * as anchor from "@project-serum/anchor";
+import { GitSol } from "../utils/git_sol";
+// const idl:GitSol = require("../utils/idl.json");
+import { idl } from "../utils/idl";
+import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
+import { Program } from "@project-serum/anchor";
+import { airDropSol } from "../utils/airdrop";
 export async function create() {
   const keyPair = Keypair.generate();
   let confirmPassword;
@@ -110,6 +117,28 @@ export async function create() {
   const avatar = `https://github.com/${github}.png`;
 
   // TODO; contract integration
+  const provider = new anchor.AnchorProvider(
+    new Connection(clusterApiUrl("devnet")),
+    new NodeWallet(keyPair),
+    {
+      preflightCommitment: "recent",
+    }
+  );
+  const program = new Program(
+    idl as anchor.Idl,
+    new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
+    provider
+  );
+  await airDropSol(keyPair.publicKey, program, 2);
+  const user_account_reponse = await createUser(
+    keyPair,
+    program,
+    name,
+    bio,
+    socials,
+    avatar
+  );
+  console.log(chalk.greenBright("Account created!", user_account_reponse));
   console.log(chalk.green("You're all set!"));
   console.log(chalk.grey("Create a new repo by running:"));
   console.log(chalk.green("`gitsol init`"));
