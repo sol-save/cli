@@ -5,7 +5,6 @@ import chalk from "chalk";
 import CryptoJS from "crypto-js";
 import fs from "fs";
 import path from "path";
-import { fund } from "./fund";
 import * as anchor from "@project-serum/anchor";
 import { GitSol } from "../utils/git_sol";
 // const idl:GitSol = require("../utils/idl.json");
@@ -13,6 +12,8 @@ import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
 import { airDropSol } from "../utils/airdrop";
+import { fund } from ".";
+
 export async function create() {
   const keyPair = Keypair.generate();
   let confirmPassword;
