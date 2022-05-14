@@ -12,13 +12,10 @@
   </p>
   <p>
 
-[![Build Status](https://travis-ci.com/anoushk1234/GitSol.svg?branch=master)](https://travis-ci.com/anoushk1234/GitSol)
+
 [![npm version](https://img.shields.io/npm/v/badge-maker.svg)](https://npmjs.org/package/gitsol)
-[![Package size](https://img.shields.io/bundlephobia/min/GitSol)](https://img.shields.io/bundlephobia/min/GitSol)
-[![Dependencies](https://img.shields.io/david/anoushk1234/GitSol.svg?style=popout-square)](https://david-dm.org/anoushk1234/GitSol)
-[![devDependencies Status](https://david-dm.org/anoushk1234/GitSol/dev-status.svg?style=flat-square)](https://david-dm.org/anoushk1234/GitSol?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Twitter](https://img.shields.io/twitter/follow/luctstt.svg?label=Follow&style=social)](https://twitter.com/anoushk77)
+[![Twitter](https://img.shields.io/twitter/follow/anoushk77?style=social)](https://twitter.com/anoushk77)
 
   </p>
 </div>
