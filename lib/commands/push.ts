@@ -6,6 +6,7 @@ import chalk from "chalk";
 function makeStorageClient(token: string) {
   return new Web3Storage({ token });
 }
+import { exec } from "child_process";
 import { getFilesFromPath } from "web3.storage";
 import { createCommit } from "../helpers/create-commit";
 import * as anchor from "@project-serum/anchor";
@@ -15,6 +16,14 @@ import { Program } from "@project-serum/anchor";
 import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
 export async function push(keyPair: Keypair) {
+  exec("git init", (error: any, stdout: any, stderr: any) => {
+    if (error) {
+      throw error;
+    }
+    console.log(stderr);
+    console.log(stdout);
+  });
+
   const currentPath = path.resolve("./");
   const homedir = require("os").homedir();
 
