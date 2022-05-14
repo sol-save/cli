@@ -67,8 +67,7 @@ export async function init() {
     new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
     provider
   );
-  await createRepo(keyPair, program, name, description);
-  const appId = "xyz";
+  const appId = await createRepo(keyPair, program, name, description);
   const apps = JSON.parse(
     fs
       .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))

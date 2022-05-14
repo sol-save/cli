@@ -41,12 +41,8 @@ export const createRepo = async (
       })
       .signers([authority])
       .rpc();
-    console.log("Your transaction signature", tx);
-    console.log(
-      "Repo created:",
-      await program.account.repoAccount.fetch(repoPDA)
-    );
-    console.log(repo_id);
+    console.log("Created repo: ", tx);
+    return repo_id
   } catch (error) {
     console.log(chalk.red("🔴 Error in create-repo.ts:  ", error));
     throw new Error("failed");

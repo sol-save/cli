@@ -63,17 +63,9 @@ export async function fund() {
     console.log(chalk.green("Account is already funded."));
     process.exit(0);
   }
-
-  console.log(chalk.green("Funding account..."));
-  const account = await unlock();
-
-  const { program } = Contract(Keypair.fromSecretKey(account.secretKey));
-
-  await airDropSol(new PublicKey(account.publicKey), program, 2);
-
   console.log(chalk.grey(`Your gitsol account is not funded.`));
   console.log(
-    chalk.grey(`You are on devnet, so we have initiated an airdrop.`)
+    chalk.grey(`Please fund your account on the devnet:`)
   );
   console.log(chalk.grey(`Here's the address:`));
   console.log(chalk.green(`${config.account}`));
@@ -89,7 +81,6 @@ export async function fund() {
       funded = true;
     }
   }
-  //console.log(chalk.green("Account is funded!"));
 }
 
 function createConnection(url = clusterApiUrl("devnet")) {
