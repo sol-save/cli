@@ -1,5 +1,5 @@
-import chalk from "chalk";
-import { Keypair, PublicKey, SystemProgram } from "@solana/web3.js";
+
+import { Keypair, PublicKey } from "@solana/web3.js";
 import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
 export const getRepoLists = async (authority: Keypair, program: Program) => {

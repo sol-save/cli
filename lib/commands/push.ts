@@ -8,10 +8,7 @@ function makeStorageClient(token: string) {
 }
 import { getFilesFromPath } from "web3.storage";
 import { createCommit } from "../helpers/create-commit";
-import { unlock } from "./unlock";
 import * as anchor from "@project-serum/anchor";
-import { GitSol } from "../utils/git_sol";
-// const idl:GitSol = require("../utils/idl.json");
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";

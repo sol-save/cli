@@ -9,12 +9,10 @@ import path from "path";
 import { fund } from "./fund";
 
 import * as anchor from "@project-serum/anchor";
-import { GitSol } from "../utils/git_sol";
 // const idl:GitSol = require("../utils/idl.json");
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
-import { airDropSol } from "../utils/airdrop";
 
 export async function create() {
   const homedir = require("os").homedir();

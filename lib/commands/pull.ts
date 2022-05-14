@@ -1,7 +1,6 @@
 import path from "path";
 const http = require("https"); // or 'https' for https:// URLs
 const fs = require("fs-extra");
-import fss from "fs";
 const unzipper = require("unzipper");
 import { exec } from "child_process";
 import chalk from "chalk";
@@ -10,7 +9,6 @@ import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
 import { clusterApiUrl, Connection, PublicKey, Keypair } from "@solana/web3.js";
-import { unlock } from "./unlock";
 import { pullRepo } from "../helpers/pull-repo";
 
 export async function pull(keyPair: Keypair) {

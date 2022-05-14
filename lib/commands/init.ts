@@ -1,5 +1,4 @@
 import path from "path";
-import { unlock } from "./unlock";
 import inquirer from "inquirer";
 import generator from "project-name-generator";
 import chalk from "chalk";
@@ -7,7 +6,6 @@ import fs from "fs";
 import { createRepo } from "../helpers/create-repo";
 const { exec } = require("child_process");
 import * as anchor from "@project-serum/anchor";
-import { GitSol } from "../utils/git_sol";
 // const idl:GitSol = require("../utils/idl.json");
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";

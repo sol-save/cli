@@ -3,7 +3,6 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import path from "path";
 import fs from "fs";
-import { create } from "./register";
 import CryptoJS from "crypto-js";
 
 export async function unlock(keyPair?: Keypair): Promise<any> {

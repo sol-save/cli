@@ -1,14 +1,9 @@
 import {
-  Account,
   clusterApiUrl,
   Connection,
   Keypair,
   PublicKey,
-  sendAndConfirmTransaction,
-  SystemProgram,
-  Transaction,
 } from "@solana/web3.js";
-import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
 import path from "path";
