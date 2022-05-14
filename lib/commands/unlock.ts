@@ -48,7 +48,6 @@ export async function unlock(): Promise<any> {
     let secretKey = Uint8Array.from(accountConfig.secretKey.split(","));
     keypair = Keypair.fromSecretKey(secretKey);
   } catch (e) {
-    console.log(e);
     console.log(chalk.red("Incorrect password."));
     return await unlock();
   }

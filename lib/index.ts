@@ -11,7 +11,7 @@ const args = process.argv.slice(2);
 
 console.clear();
 
-export const art = `
+export const logo = `
          **   **                     **
   ***** //   /**                    /**
  **///** ** ******  ******  ******  /**
@@ -24,7 +24,7 @@ export const art = `
 
 (async () => {
   try {
-    console.log(art);
+    console.log(logo);
     if (!fs.existsSync(path.join(__dirname, ".gitsol"))) {
       fs.mkdirSync(path.join(__dirname, ".gitsol"));
       fs.writeFileSync(
