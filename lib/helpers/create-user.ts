@@ -14,7 +14,6 @@ export const createUser = async (
     [anchor.utils.bytes.utf8.encode("user"), authority.publicKey.toBuffer()],
     program.programId
   );
-
   try {
     const tx = await program.methods
       .createUser({

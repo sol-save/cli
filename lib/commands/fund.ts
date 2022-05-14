@@ -12,6 +12,9 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
 import path from "path";
+
+import fetch from "node-fetch";
+
 import { unlock } from "./unlock";
 import { Contract } from "../utils/contract";
 import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes";
@@ -33,6 +36,26 @@ export async function fund() {
     );
     process.exit(0);
   }
+  await fetch("https://api.devnet.solana.com/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jsonrpc: "2.0",
+      id: "fc8ec408-2cc7-41ef-ba72-90d5568851a0",
+      method: "requestAirdrop",
+      params: [config.account, 5000000000],
+    }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      throw err;
+    });
+
   const connection = createConnection();
   console.clear();
   const balance = await connection.getBalance(new PublicKey(config.account));
@@ -40,21 +63,25 @@ export async function fund() {
     console.log(chalk.green("Account is already funded."));
     process.exit(0);
   }
+
   console.log(chalk.green("Funding account..."));
   const account = await unlock();
 
   const { program } = Contract(Keypair.fromSecretKey(account.secretKey));
 
   await airDropSol(new PublicKey(account.publicKey), program, 2);
+
   console.log(chalk.grey(`Your gitsol account is not funded.`));
-  console.log(chalk.grey(`To fund it, please send some SOL to it.`));
+  console.log(
+    chalk.grey(`You are on devnet, so we have initiated an airdrop.`)
+  );
   console.log(chalk.grey(`Here's the address:`));
   console.log(chalk.green(`${config.account}`));
-  console.log(chalk.grey(`waiting for funds...`));
+  console.log(chalk.grey(`waiting for funds to arrive...`));
   let funded = false;
   while (!funded) {
     await checkFunds();
-    await sleep(2000);
+    await sleep(1000);
   }
   async function checkFunds() {
     const balance = await connection.getBalance(new PublicKey(config.account));
@@ -62,7 +89,7 @@ export async function fund() {
       funded = true;
     }
   }
-  console.log(chalk.green("Account is funded!"));
+  //console.log(chalk.green("Account is funded!"));
 }
 
 function createConnection(url = clusterApiUrl("devnet")) {

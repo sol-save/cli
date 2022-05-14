@@ -5,7 +5,9 @@ import chalk from "chalk";
 import CryptoJS from "crypto-js";
 import fs from "fs";
 import path from "path";
+
 import { fund } from "./fund";
+
 import * as anchor from "@project-serum/anchor";
 import { GitSol } from "../utils/git_sol";
 // const idl:GitSol = require("../utils/idl.json");
@@ -13,6 +15,7 @@ import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
 import { airDropSol } from "../utils/airdrop";
+
 export async function create() {
   const keyPair = Keypair.generate();
   let confirmPassword;
@@ -92,7 +95,7 @@ export async function create() {
   console.log(chalk.green("Created account!"));
   await fund();
   console.clear();
-  const { name, socials, bio, github } = await inquirer.prompt([
+  let { name, socials, bio, github } = await inquirer.prompt([
     {
       type: "input",
       name: "name",
@@ -114,6 +117,7 @@ export async function create() {
       message: "Enter your github username:",
     },
   ]);
+  socials = socials.split(",");
   const avatar = `https://github.com/${github}.png`;
 
   // TODO; contract integration
@@ -129,16 +133,13 @@ export async function create() {
     new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
     provider
   );
-  await airDropSol(keyPair.publicKey, program, 2);
-  const user_account_reponse = await createUser(
-    keyPair,
-    program,
-    name,
-    bio,
-    socials,
-    avatar
-  );
+
+  console.clear();
+  console.log(chalk.grey("creating user on chain..."));
+  await createUser(keyPair, program, name, bio, socials, avatar);
+  console.clear();
   console.log(chalk.greenBright("Account created!", user_account_reponse));
+
   console.log(chalk.green("You're all set!"));
   console.log(chalk.grey("Create a new repo by running:"));
   console.log(chalk.green("`gitsol init`"));

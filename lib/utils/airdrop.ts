@@ -1,5 +1,7 @@
 import { Program } from "@project-serum/anchor";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import chalk from "chalk";
+
 // import { GitSol } from "../target/types/git_sol";
 
 export const airDropSol = async (
@@ -16,7 +18,9 @@ export const airDropSol = async (
     const ar_tx = await program.provider.connection.confirmTransaction(
       fromAirDropSignature
     );
-    console.log("success", ar_tx, fromAirDropSignature);
+
+    console.log(chalk.greenBright(`Airdrop successful!`, fromAirDropSignature));
+
   } catch (er) {
     console.log("Error Here: " + er);
   }
