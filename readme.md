@@ -15,7 +15,7 @@
 
 [![npm version](https://img.shields.io/npm/v/badge-maker.svg)](https://npmjs.org/package/gitsol)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Twitter](https://img.shields.io/twitter/follow/anoushk77?style=social)](https://twitter.com/ayshptk)
+[![Twitter](https://img.shields.io/twitter/follow/ayshptk?style=social)](https://twitter.com/ayshptk)
 
   </p>
 </div>
