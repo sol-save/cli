@@ -1,5 +1,5 @@
 {
-  "name": "@create-anchor-app/cli",
+  "name": "gitsol",
   "version": "0.0.20",
   "description": "create anchor apps on the fly ",
   "main": "dist/index.js",
@@ -11,18 +11,10 @@
     "dev": "npm run build && npm i . -g --force && gitsol",
     "build": "tsc -p ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/create-anchor-app/cli.git"
-  },
   "bin": {
     "gitsol": "./bin/index.js"
   },
   "author": "ayush <hey@ayush.sh> (https://ayush.sh)",
-  "bugs": {
-    "url": "https://github.com/create-anchor-app/cli/issues"
-  },
-  "homepage": "https://github.com/create-anchor-app/cli#readme",
   "dependencies": {
     "@project-serum/anchor": "^0.24.2",
     "@solana/web3.js": "^1.41.9",
