@@ -9,11 +9,11 @@ import * as anchor from "@project-serum/anchor";
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { clusterApiUrl, Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { unlock } from "./unlock";
 import { pullRepo } from "../helpers/pull-repo";
 
-export async function pull() {
+export async function pull(keyPair: Keypair) {
   const currentPath = path.resolve("./");
   const appConfig = JSON.parse(
     fs
@@ -27,7 +27,6 @@ export async function pull() {
     );
     process.exit(1);
   }
-  const keyPair = await unlock();
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
     new NodeWallet(keyPair),

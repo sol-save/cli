@@ -15,7 +15,7 @@ import { Program } from "@project-serum/anchor";
 
 import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
-export async function init() {
+export async function init(keyPair: Keypair) {
   const p = path.resolve("./");
   exec("git init", (error: any, stdout: any, stderr: any) => {});
   exec(
@@ -23,7 +23,6 @@ export async function init() {
     (error: any, stdout: any, stderr: any) => {}
   );
 
-  const keypair = await unlock();
   const { name, description, license } = await inquirer.prompt([
     {
       type: "input",
@@ -54,7 +53,6 @@ export async function init() {
     },
   ]);
   console.log(chalk.green("Creating project..."));
-  const keyPair = await unlock();
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
     new NodeWallet(keyPair),

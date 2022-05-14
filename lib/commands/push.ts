@@ -17,7 +17,7 @@ import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
 import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
-export async function push() {
+export async function push(keyPair: Keypair) {
   const currentPath = path.resolve("./");
   const appConfig = JSON.parse(
     fs
@@ -38,7 +38,6 @@ export async function push() {
       .readFileSync(path.join(__dirname, "..", ".gitsol", "config.json"))
       .toString()
   );
-  const keyPair = await unlock();
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
     new NodeWallet(keyPair),

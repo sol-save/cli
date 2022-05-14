@@ -60,7 +60,9 @@ export const logo = `
       console.log(chalk.red("You can run: gitsol --help"));
     }
   } catch (err: any) {
-    console.log(chalk.red(`Error fetching latest examples: ${err.message}`));
+    console.log(
+      chalk.red(`🚨 error while carrying out command: ${err.message}`)
+    );
     process.exit(1);
   }
 })();

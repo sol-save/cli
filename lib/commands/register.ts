@@ -92,7 +92,6 @@ export async function create() {
     path.join(__dirname, "..", ".gitsol", "config.json"),
     JSON.stringify(config)
   );
-  console.log(chalk.green("Created account!"));
   await fund();
   console.clear();
   let { name, socials, bio, github } = await inquirer.prompt([
@@ -135,7 +134,7 @@ export async function create() {
   );
 
   console.clear();
-  console.log(chalk.grey("creating user on chain..."));
+  console.log(chalk.grey("🪐 creating user on solana chain..."));
   await createUser(keyPair, program, name, bio, socials, avatar);
   console.clear();
 

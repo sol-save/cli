@@ -9,7 +9,7 @@ import * as anchor from "@project-serum/anchor";
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 import { unlock } from "./unlock";
 import { pullRepo } from "../helpers/pull-repo";
 import { getRepoId } from "../helpers/get-repo-id";
@@ -17,7 +17,7 @@ import { getRepoLists } from "../helpers/clone-repo";
 import inquirer from "inquirer";
 import { pull } from "./pull";
 
-export async function clone() {
+export async function clone(keyPair: Keypair) {
   const currentPath = path.resolve("./");
   const appConfig = JSON.parse(
     fs
@@ -33,7 +33,6 @@ export async function clone() {
     );
     process.exit(1);
   }
-  const keyPair = await unlock();
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
     new NodeWallet(keyPair),
@@ -71,5 +70,5 @@ export async function clone() {
     path.join(__dirname, "..", ".gitsol", "apps.json"),
     JSON.stringify(apps)
   );
-  await pull();
+  await pull(keyPair);
 }
