@@ -43,7 +43,7 @@ export const createRepo = async (
       .rpc();
     console.log("Your transaction signature", tx);
   } catch (error) {
-    console.log(chalk.red("🔴 Error in create-user.ts:  ", error));
+    console.log(chalk.red("🔴 Error in create-repo.ts:  ", error));
     throw new Error("failed")
   }
 };
