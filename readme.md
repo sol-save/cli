@@ -34,7 +34,7 @@
 - [Documentation 📄](#documentation-)
 <!-- - [API 👩‍💻](#api-) -->
 - [Demo 🎮](#demo-)
-- [Tech Used ⚙️[(#tech-used-)
+- [Tech Used ⚙️](#tech=used-)
 <!-- - [Contributing 🍰](#contributing-) -->
 - [Maintainers 👷](#maintainers-)
 - [License ⚖️](#license-️)
