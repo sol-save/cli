@@ -138,7 +138,6 @@ export async function create() {
   console.log(chalk.grey("creating user on chain..."));
   await createUser(keyPair, program, name, bio, socials, avatar);
   console.clear();
-  console.log(chalk.greenBright("Account created!", user_account_reponse));
 
   console.log(chalk.green("You're all set!"));
   console.log(chalk.grey("Create a new repo by running:"));

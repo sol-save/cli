@@ -1,4 +1,4 @@
 rm -rf bin
-yarn dev
+npm run dev
 chmod 755 /usr/local/bin/gitsol
-yarn dev
+npm run dev
