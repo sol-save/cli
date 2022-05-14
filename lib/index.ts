@@ -23,7 +23,6 @@ export const logo = `
 
 (async () => {
   try {
-    console.log(logo);
     const homedir = require("os").homedir();
 
     if (!fs.existsSync(path.resolve(homedir, ".gitsol"))) {
@@ -44,7 +43,6 @@ export const logo = `
         .readFileSync(path.resolve(homedir, ".gitsol", "config.json"))
         .toString()
     );
-    console.log(chalk.green("Welcome to GitSol!"));
 
     if (!config.registered) {
       console.log(
@@ -53,6 +51,8 @@ export const logo = `
       await create();
     }
     if (args.length === 0) {
+      console.log(logo);
+      console.log(chalk.green("Welcome to GitSol!"));
       console.log(chalk.blue(`Your gitsol account is ${config.account}`));
       console.log(chalk.grey("To see all commands, run : gitsol --help"));
       process.exit(0);
