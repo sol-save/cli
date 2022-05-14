@@ -10,12 +10,10 @@ export const createUser = async (
   socialLinks: string[],
   avatar: string
 ) => {
-  console.log(chalk.grey("Decentralised Hosting"));
   const [userPDA, _] = await PublicKey.findProgramAddress(
     [anchor.utils.bytes.utf8.encode("user"), authority.publicKey.toBuffer()],
     program.programId
   );
-  console.log(chalk.grey("Decentralised Hosting 2"));
   try {
     const tx = await program.methods
       .createUser({
