@@ -4,7 +4,16 @@ import inquirer from "inquirer";
 import generator from "project-name-generator";
 import chalk from "chalk";
 import fs from "fs";
+import { createRepo } from "../helpers/create-repo";
 const { exec } = require("child_process");
+import * as anchor from "@project-serum/anchor";
+import { GitSol } from "../utils/git_sol";
+// const idl:GitSol = require("../utils/idl.json");
+import { idl } from "../utils/idl";
+import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
+import { Program } from "@project-serum/anchor";
+
+import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
 export async function init() {
   const p = path.resolve("./");
@@ -13,6 +22,7 @@ export async function init() {
     "git add . && git commit -m 'automated commit from gitsol'",
     (error: any, stdout: any, stderr: any) => {}
   );
+
   const keypair = await unlock();
   const { name, description, license } = await inquirer.prompt([
     {
@@ -44,7 +54,20 @@ export async function init() {
     },
   ]);
   console.log(chalk.green("Creating project..."));
-  // TODO interact with contract and get xyz app id
+  const keyPair = await unlock();
+  const provider = new anchor.AnchorProvider(
+    new Connection(clusterApiUrl("devnet")),
+    new NodeWallet(keyPair),
+    {
+      preflightCommitment: "recent",
+    }
+  );
+  const program = new Program(
+    idl as anchor.Idl,
+    new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
+    provider
+  );
+  await createRepo(keyPair, program, name, description);
   const appId = "xyz";
   const apps = JSON.parse(
     fs

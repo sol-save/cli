@@ -6,7 +6,6 @@ import path from "path";
 import chalk from "chalk";
 import fs from "fs";
 import { supportedCommands, create } from "./commands";
-import { updateConfig } from "./utils";
 const args = process.argv.slice(2);
 
 console.clear();
