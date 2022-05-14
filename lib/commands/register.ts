@@ -5,6 +5,9 @@ import chalk from "chalk";
 import CryptoJS from "crypto-js";
 import fs from "fs";
 import path from "path";
+
+import { fund } from "./fund";
+
 import * as anchor from "@project-serum/anchor";
 import { GitSol } from "../utils/git_sol";
 // const idl:GitSol = require("../utils/idl.json");
@@ -12,7 +15,6 @@ import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
 import { airDropSol } from "../utils/airdrop";
-import { fund } from ".";
 
 export async function create() {
   const keyPair = Keypair.generate();
@@ -131,13 +133,13 @@ export async function create() {
     new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
     provider
   );
-  // console.clear();
-  // console.log(chalk.grey("airdropping sol..."));
-  // await airDropSol(keyPair.publicKey, program, 2);
+
   console.clear();
   console.log(chalk.grey("creating user on chain..."));
   await createUser(keyPair, program, name, bio, socials, avatar);
   console.clear();
+  console.log(chalk.greenBright("Account created!", user_account_reponse));
+
   console.log(chalk.green("You're all set!"));
   console.log(chalk.grey("Create a new repo by running:"));
   console.log(chalk.green("`gitsol init`"));
