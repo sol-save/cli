@@ -51,6 +51,7 @@ export async function push() {
     new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
     provider
   );
+
   console.clear();
   console.log(chalk.grey("creating commit..."));
   const appPath = path.resolve("./");

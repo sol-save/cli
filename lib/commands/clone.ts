@@ -12,8 +12,12 @@ import { Program } from "@project-serum/anchor";
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 import { unlock } from "./unlock";
 import { pullRepo } from "../helpers/pull-repo";
+import { getRepoId } from "../helpers/get-repo-id";
+import { getRepoLists } from "../helpers/clone-repo";
+import inquirer from "inquirer";
+import { pull } from "./pull";
 
-export async function pull() {
+export async function clone() {
   const currentPath = path.resolve("./");
   const appConfig = JSON.parse(
     fs
@@ -21,9 +25,11 @@ export async function pull() {
       .toString()
   );
 
-  if (appConfig[currentPath] === undefined) {
+  if (appConfig[currentPath] !== undefined) {
     console.log(
-      chalk.red("Current directory is not a repo! Try `gitsol init`")
+      chalk.red(
+        "Current directory is already a repo on gitsol! Try somewhere else"
+      )
     );
     process.exit(1);
   }
@@ -40,27 +46,30 @@ export async function pull() {
     new PublicKey("7PsWEzPcGpdUWdVE4ogMiV9xCKeyjPBsxHcchotwx4cX"),
     provider
   );
-  const repo = await pullRepo(keyPair, program, appConfig[currentPath]);
-  let latestCode = `https://ipfs.fleek.co/ipfs/${repo}`;
-  const ts = Date.now();
-  const location = path.join(__dirname, "..", ".gitsol", `${ts}.zip`);
-  const file = fs.createWriteStream(location);
-  await http.get(latestCode, function (response: any) {
-    response.pipe(file);
-    file.on("finish", async () => {
-      file.close();
-      const gitPath = path.resolve("./.git");
-      fs.emptyDirSync(gitPath);
-      await fs
-        .createReadStream(location)
-        .pipe(unzipper.Extract({ path: gitPath }))
-        .promise();
-      exec("git stash", (err: any, stdout: any, stderr: any) => {
-        if (err) {
-          console.log(err);
-        }
-      });
-      fs.unlinkSync(location);
-    });
-  });
+  const repos = await getRepoLists(keyPair, program);
+  const { chosenId } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "chosenId",
+      choices: repos.map((repo) => {
+        return {
+          name: repo.name,
+          value: repo.id,
+        };
+      }),
+    },
+  ]);
+  exec("git init", (error: any, stdout: any, stderr: any) => {});
+
+  const apps = JSON.parse(
+    fs
+      .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
+      .toString()
+  );
+  apps[currentPath] = chosenId;
+  fs.writeFileSync(
+    path.join(__dirname, "..", ".gitsol", "apps.json"),
+    JSON.stringify(apps)
+  );
+  await pull();
 }

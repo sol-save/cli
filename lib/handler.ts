@@ -1,4 +1,4 @@
-import { fund, unlock, init, push, pull } from "./commands";
+import { fund, unlock, init, push, pull, clone } from "./commands";
 export async function handler(command: string, args: string[]) {
   switch (command) {
     case "fund": {
@@ -19,6 +19,10 @@ export async function handler(command: string, args: string[]) {
     }
     case "pull": {
       await pull();
+      break;
+    }
+    case "clone": {
+      await clone();
       break;
     }
   }

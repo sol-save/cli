@@ -22,7 +22,7 @@ export const pullRepo = async (
 
   try {
     const repo = await program.account.repoAccount.fetch(repoPDA);
-    return repo.commits[-1];
+    return repo.commits[repo.commits.length - 1].hash;
   } catch (error) {
     console.log(chalk.red("🔴 Error in create-commit.ts:  ", error));
     throw new Error("failed");
