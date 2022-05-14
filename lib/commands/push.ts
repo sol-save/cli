@@ -7,6 +7,10 @@ function makeStorageClient(token: string) {
   return new Web3Storage({ token });
 }
 import { getFilesFromPath } from "web3.storage";
+import { unlock } from "./unlock";
+import { Contract } from "../utils/contract";
+import { Keypair } from "@solana/web3.js";
+import chalk from "chalk";
 
 export async function push() {
   const timestamp = Date.now();
@@ -23,4 +27,10 @@ export async function push() {
   const cid = await client.put(files);
   console.log(`http://ipfs.fleek.co/ipfs/${cid}/${timestamp}.zip`);
   // TODO contract interaction
+  const account = await unlock();
+  const { provider, program } = Contract(
+    Keypair.fromSecretKey(account.secretKey)
+  );
+  console.clear();
+  console.log(chalk.grey("pushing code on chain..."));
 }
