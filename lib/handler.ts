@@ -18,7 +18,7 @@ export async function handler(command: string, args: string[]) {
       break;
     }
     case "pull": {
-      await pull(args[0]);
+      await pull();
       break;
     }
   }

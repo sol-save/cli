@@ -15,7 +15,6 @@ import { GitSol } from "../utils/git_sol";
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
-
 import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
 export async function push() {
@@ -68,5 +67,6 @@ export async function push() {
     appConfig[currentPath],
     `${cid}/${timestamp}.zip`
   );
+  console.clear();
   console.log(chalk.green("commit pushed at ", tx));
 }
