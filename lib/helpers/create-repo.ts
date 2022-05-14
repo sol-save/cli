@@ -46,6 +46,7 @@ export const createRepo = async (
       "Repo created:",
       await program.account.repoAccount.fetch(repoPDA)
     );
+    console.log(repo_id);
   } catch (error) {
     console.log(chalk.red("🔴 Error in create-repo.ts:  ", error));
     throw new Error("failed");
