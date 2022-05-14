@@ -21,11 +21,11 @@ async function sleep(milliseconds: number) {
 
 export async function fund(keyPair?: Keypair) {
   console.clear();
+  const homedir = require("os").homedir();
+
   console.log(chalk.gray("working..."));
   const config = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "config.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "config.json")).toString()
   );
   if (!config.registered) {
     console.log(

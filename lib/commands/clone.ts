@@ -19,10 +19,10 @@ import { pull } from "./pull";
 
 export async function clone(keyPair: Keypair) {
   const currentPath = path.resolve("./");
+  const homedir = require("os").homedir();
+
   const appConfig = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "apps.json")).toString()
   );
 
   if (appConfig[currentPath] !== undefined) {
@@ -64,16 +64,12 @@ export async function clone(keyPair: Keypair) {
   console.log(chalk.gray("initialising git..."));
   exec("git init", (error: any, stdout: any, stderr: any) => {});
   const apps = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "apps.json")).toString()
   );
   apps[currentPath] = chosenId;
   fs.writeFileSync(
-    path.join(__dirname, "..", ".gitsol", "apps.json"),
+    path.join(homedir, ".gitsol", "apps.json"),
     JSON.stringify(apps)
   );
   await pull(keyPair);
-  console.clear();
-  console.log(chalk.green("successfully cloned!"));
 }

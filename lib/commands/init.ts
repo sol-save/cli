@@ -16,6 +16,8 @@ import { Program } from "@project-serum/anchor";
 import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
 export async function init(keyPair: Keypair) {
+  const homedir = require("os").homedir();
+
   const p = path.resolve("./");
   exec("git init", (error: any, stdout: any, stderr: any) => {});
   exec(
@@ -68,14 +70,12 @@ export async function init(keyPair: Keypair) {
   );
   const appId = await createRepo(keyPair, program, name, description);
   const apps = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "apps.json")).toString()
   );
   apps[p] = appId;
 
   fs.writeFileSync(
-    path.join(__dirname, "..", ".gitsol", "apps.json"),
+    path.join(homedir, ".gitsol", "apps.json"),
     JSON.stringify(apps)
   );
   console.clear();

@@ -24,21 +24,25 @@ export const logo = `
 (async () => {
   try {
     console.log(logo);
-    if (!fs.existsSync(path.join(__dirname, ".gitsol"))) {
-      fs.mkdirSync(path.join(__dirname, ".gitsol"));
+    const homedir = require("os").homedir();
+
+    if (!fs.existsSync(path.resolve(homedir, ".gitsol"))) {
+      fs.mkdirSync(path.resolve(homedir, ".gitsol"));
       fs.writeFileSync(
-        path.join(__dirname, ".gitsol", "config.json"),
+        path.resolve(homedir, ".gitsol", "config.json"),
         JSON.stringify({
           registered: false,
         })
       );
       fs.writeFileSync(
-        path.join(__dirname, ".gitsol", "apps.json"),
+        path.resolve(homedir, ".gitsol", "apps.json"),
         JSON.stringify({})
       );
     }
     const config = JSON.parse(
-      fs.readFileSync(path.join(__dirname, ".gitsol", "config.json")).toString()
+      fs
+        .readFileSync(path.resolve(homedir, ".gitsol", "config.json"))
+        .toString()
     );
     console.log(chalk.green("Welcome to GitSol!"));
 

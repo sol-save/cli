@@ -19,10 +19,10 @@ import { clusterApiUrl, Connection, Keypair, PublicKey } from "@solana/web3.js";
 
 export async function push(keyPair: Keypair) {
   const currentPath = path.resolve("./");
+  const homedir = require("os").homedir();
+
   const appConfig = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "apps.json")).toString()
   );
 
   if (appConfig[currentPath] === undefined) {
@@ -34,9 +34,7 @@ export async function push(keyPair: Keypair) {
 
   const timestamp = Date.now();
   const config = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "config.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "config.json")).toString()
   );
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
@@ -54,7 +52,7 @@ export async function push(keyPair: Keypair) {
   console.clear();
   console.log(chalk.grey("uploading files to IPFS..."));
   const appPath = path.resolve("./");
-  const zipPath = path.join(__dirname, "..", ".gitsol", `${timestamp}.zip`);
+  const zipPath = path.join(homedir, ".gitsol", `${timestamp}.zip`);
   await zip(`${appPath}/.git`, zipPath);
   const files = await getFilesFromPath(zipPath);
   const client = makeStorageClient(config.storagekey);

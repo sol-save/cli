@@ -15,11 +15,11 @@ import { pullRepo } from "../helpers/pull-repo";
 
 export async function pull(keyPair: Keypair) {
   console.clear();
+  const homedir = require("os").homedir();
+
   const currentPath = path.resolve("./");
   const appConfig = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "apps.json")).toString()
   );
 
   if (appConfig[currentPath] === undefined) {
@@ -45,7 +45,7 @@ export async function pull(keyPair: Keypair) {
   const repo = await pullRepo(keyPair, program, appConfig[currentPath]);
   let latestCode = `https://ipfs.fleek.co/ipfs/${repo}`;
   const ts = Date.now();
-  const location = path.join(__dirname, "..", ".gitsol", `${ts}.zip`);
+  const location = path.join(homedir, ".gitsol", `${ts}.zip`);
   const file = fs.createWriteStream(location);
   console.clear();
   console.log(chalk.gray("cloning repo..."));
