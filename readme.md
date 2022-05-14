@@ -30,9 +30,11 @@
 - [Features ✨](#features-)
 - [Install 🐙](#install-)
 - [Usage 💡](#usage-)
-- [Exemples 🖍](#examples-)
+- [Examples 🖍](#examples-)
 - [Documentation 📄](#documentation-)
-- [API 👩‍💻](#api-)
+<!-- - [API 👩‍💻](#api-) -->
+- [Demo 🎮](#demo-)
+- [Tech Used ⚙️[(#tech-used-)
 <!-- - [Contributing 🍰](#contributing-) -->
 - [Maintainers 👷](#maintainers-)
 - [License ⚖️](#license-️)
@@ -65,13 +67,23 @@ gitsol clone
 ## Documentation 📄
 [docs.gitsol.xyz](https://docs.gitsol.xyz)
 
-## API 👩‍💻
-You have a small project or you'll like to share the API of your project ? This is where it's happen.
+<!-- ## API 👩‍💻
+You have a small project or you'll like to share the API of your project ? This is where it's happen. -->
 
+## Demo 🎮
+Click on the video below to watch <br>
+[![Demo video](https://img.youtube.com/vi/pk66JHNMfVY/0.jpg)](https://www.youtube.com/watch?v=pk66JHNMfVY)
 <!-- ## Contributing 🍰
 Please make sure to read the [Contributing Guide]() before making a pull request.
 
+
 Thank you to all the people who already contributed to this project! -->
+
+## Tech Used ⚙️
+ - [Anchor](https://project-serum.github.io/anchor/)
+ - [web3.storage](https://web3.storage/)
+ - [Next.js](https://nextjs.org/)
+ - [Chakra UI](https://chakra-ui.com/)
 
 ## Maintainers 👷
 <table>
