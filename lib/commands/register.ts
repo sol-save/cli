@@ -93,7 +93,17 @@ export async function create() {
   console.log(chalk.green("Created account!"));
   await fund();
   console.clear();
-  const { name, socials, bio, github } = await inquirer.prompt([
+  const {
+    name,
+    socials,
+    bio,
+    github,
+  }: {
+    name: string;
+    socials: string;
+    bio: string;
+    github: string;
+  } = await inquirer.prompt([
     {
       type: "input",
       name: "name",
@@ -131,12 +141,14 @@ export async function create() {
     provider
   );
   await airDropSol(keyPair.publicKey, program, 2);
+  const socialLinks = socials.split(",");
+
   const user_account_reponse = await createUser(
     keyPair,
     program,
     name,
     bio,
-    socials,
+    socialLinks,
     avatar
   );
   console.log(chalk.greenBright("Account created!", user_account_reponse));
