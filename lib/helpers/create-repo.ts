@@ -6,7 +6,7 @@ export const createRepo = async (
   authority: Keypair,
   program: Program,
   name: string,
-  description: string,
+  description: string
 ) => {
   const [userPDA, x] = await PublicKey.findProgramAddress(
     [anchor.utils.bytes.utf8.encode("user"), authority.publicKey.toBuffer()],
@@ -28,8 +28,8 @@ export const createRepo = async (
     const tx = await program.methods
       .createRepo({
         name,
-        description,
-        socialLinks: [],
+        bio: description,
+        socialLinks: [""],
         remote: "",
         avatar: "",
       })
@@ -42,8 +42,12 @@ export const createRepo = async (
       .signers([authority])
       .rpc();
     console.log("Your transaction signature", tx);
+    console.log(
+      "Repo created:",
+      await program.account.repoAccount.fetch(repoPDA)
+    );
   } catch (error) {
     console.log(chalk.red("🔴 Error in create-repo.ts:  ", error));
-    throw new Error("failed")
+    throw new Error("failed");
   }
 };
