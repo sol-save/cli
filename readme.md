@@ -13,12 +13,12 @@
   <p>
 
 [![Build Status](https://travis-ci.com/anoushk1234/GitSol.svg?branch=master)](https://travis-ci.com/anoushk1234/GitSol)
-[![NPM version](https://img.shields.io/npm/v/GitSol?style=flat-square)](https://img.shields.io/npm/v/GitSol?style=flat-square)
+[![npm version](https://img.shields.io/npm/v/badge-maker.svg)](https://npmjs.org/package/gitsol)
 [![Package size](https://img.shields.io/bundlephobia/min/GitSol)](https://img.shields.io/bundlephobia/min/GitSol)
 [![Dependencies](https://img.shields.io/david/anoushk1234/GitSol.svg?style=popout-square)](https://david-dm.org/anoushk1234/GitSol)
 [![devDependencies Status](https://david-dm.org/anoushk1234/GitSol/dev-status.svg?style=flat-square)](https://david-dm.org/anoushk1234/GitSol?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Twitter](https://img.shields.io/twitter/follow/luctstt.svg?label=Follow&style=social)](https://twitter.com/luctstt)
+[![Twitter](https://img.shields.io/twitter/follow/luctstt.svg?label=Follow&style=social)](https://twitter.com/anoushk77)
 
   </p>
 </div>
@@ -30,10 +30,10 @@
 - [Features ✨](#features-)
 - [Install 🐙](#install-)
 - [Usage 💡](#usage-)
-- [Exemples 🖍](#exemples-)
+- [Exemples 🖍](#examples-)
 - [Documentation 📄](#documentation-)
 - [API 👩‍💻](#api-)
-- [Contributing 🍰](#contributing-)
+<!-- - [Contributing 🍰](#contributing-) -->
 - [Maintainers 👷](#maintainers-)
 - [License ⚖️](#license-️)
 
@@ -43,14 +43,23 @@
 * ...
 
 ## Install 🐙
-Explain to your users how they can install your product :)
+```
+npm i -g gitsol
+```
+Using npx
+```
+npx gitsol
+```
 
 ## Usage 💡
 In this section you can write some popular examples about how you can interact with the project. It's advisable to write some code here.
 
 ## Examples 🖍
 ```
-Show some code
+gitsol init
+gitsol push
+gitsol pull
+gitsol clone
 ```
 
 ## Documentation 📄
