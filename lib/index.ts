@@ -6,7 +6,6 @@ import path from "path";
 import chalk from "chalk";
 import fs from "fs";
 import { supportedCommands, create } from "./commands";
-import { updateConfig } from "./utils";
 const args = process.argv.slice(2);
 
 console.clear();
@@ -25,21 +24,25 @@ export const logo = `
 (async () => {
   try {
     console.log(logo);
-    if (!fs.existsSync(path.join(__dirname, ".gitsol"))) {
-      fs.mkdirSync(path.join(__dirname, ".gitsol"));
+    const homedir = require("os").homedir();
+
+    if (!fs.existsSync(path.resolve(homedir, ".gitsol"))) {
+      fs.mkdirSync(path.resolve(homedir, ".gitsol"));
       fs.writeFileSync(
-        path.join(__dirname, ".gitsol", "config.json"),
+        path.resolve(homedir, ".gitsol", "config.json"),
         JSON.stringify({
           registered: false,
         })
       );
       fs.writeFileSync(
-        path.join(__dirname, ".gitsol", "apps.json"),
+        path.resolve(homedir, ".gitsol", "apps.json"),
         JSON.stringify({})
       );
     }
     const config = JSON.parse(
-      fs.readFileSync(path.join(__dirname, ".gitsol", "config.json")).toString()
+      fs
+        .readFileSync(path.resolve(homedir, ".gitsol", "config.json"))
+        .toString()
     );
     console.log(chalk.green("Welcome to GitSol!"));
 
@@ -61,7 +64,9 @@ export const logo = `
       console.log(chalk.red("You can run: gitsol --help"));
     }
   } catch (err: any) {
-    console.log(chalk.red(`Error fetching latest examples: ${err.message}`));
+    console.log(
+      chalk.red(`🚨 error while carrying out command: ${err.message}`)
+    );
     process.exit(1);
   }
 })();

@@ -17,6 +17,8 @@ import { Program } from "@project-serum/anchor";
 import { airDropSol } from "../utils/airdrop";
 
 export async function create() {
+  const homedir = require("os").homedir();
+
   const keyPair = Keypair.generate();
   let confirmPassword;
   let { password } = await inquirer.prompt([
@@ -55,10 +57,7 @@ export async function create() {
     JSON.stringify(account),
     confirmPassword
   ).toString();
-  fs.writeFileSync(
-    path.join(__dirname, "..", ".gitsol", "account"),
-    encryptedAccount
-  );
+  fs.writeFileSync(path.join(homedir, ".gitsol", "account"), encryptedAccount);
   console.clear();
   console.log(chalk.grey("Decentralised Hosting"));
   console.log(chalk.grey("======================"));
@@ -75,9 +74,7 @@ export async function create() {
   ]);
 
   const config = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "config.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "config.json")).toString()
   );
   if (confirmPassword === "default") {
     config.encrypted = false;
@@ -89,10 +86,9 @@ export async function create() {
   config.account = keyPair.publicKey.toString();
   config.storagekey = web3StrorageApiKey;
   fs.writeFileSync(
-    path.join(__dirname, "..", ".gitsol", "config.json"),
+    path.join(homedir, ".gitsol", "config.json"),
     JSON.stringify(config)
   );
-  console.log(chalk.green("Created account!"));
   await fund();
   console.clear();
   let { name, socials, bio, github } = await inquirer.prompt([
@@ -135,7 +131,7 @@ export async function create() {
   );
 
   console.clear();
-  console.log(chalk.grey("creating user on chain..."));
+  console.log(chalk.grey("🪐 creating user on solana chain..."));
   await createUser(keyPair, program, name, bio, socials, avatar);
   console.clear();
 

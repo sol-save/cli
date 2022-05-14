@@ -15,20 +15,17 @@ import path from "path";
 
 import fetch from "node-fetch";
 
-import { unlock } from "./unlock";
-import { Contract } from "../utils/contract";
-import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes";
-import { airDropSol } from "../utils/airdrop";
-
 async function sleep(milliseconds: number) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
-export async function fund() {
+export async function fund(keyPair?: Keypair) {
+  console.clear();
+  const homedir = require("os").homedir();
+
+  console.log(chalk.gray("working..."));
   const config = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "config.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "config.json")).toString()
   );
   if (!config.registered) {
     console.log(
@@ -63,18 +60,8 @@ export async function fund() {
     console.log(chalk.green("Account is already funded."));
     process.exit(0);
   }
-
-  console.log(chalk.green("Funding account..."));
-  const account = await unlock();
-
-  const { program } = Contract(Keypair.fromSecretKey(account.secretKey));
-
-  await airDropSol(new PublicKey(account.publicKey), program, 2);
-
   console.log(chalk.grey(`Your gitsol account is not funded.`));
-  console.log(
-    chalk.grey(`You are on devnet, so we have initiated an airdrop.`)
-  );
+  console.log(chalk.grey(`Please fund your account on the devnet:`));
   console.log(chalk.grey(`Here's the address:`));
   console.log(chalk.green(`${config.account}`));
   console.log(chalk.grey(`waiting for funds to arrive...`));
@@ -89,7 +76,6 @@ export async function fund() {
       funded = true;
     }
   }
-  //console.log(chalk.green("Account is funded!"));
 }
 
 function createConnection(url = clusterApiUrl("devnet")) {

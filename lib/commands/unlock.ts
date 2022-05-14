@@ -1,4 +1,4 @@
-const { Keypair } = require("@solana/web3.js");
+import { Keypair } from "@solana/web3.js";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import path from "path";
@@ -6,19 +6,14 @@ import fs from "fs";
 import { create } from "./register";
 import CryptoJS from "crypto-js";
 
-export async function unlock(): Promise<any> {
+export async function unlock(keyPair?: Keypair): Promise<any> {
+  const homedir = require("os").homedir();
+
   const config = JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, "..", ".gitsol", "config.json"))
-      .toString()
+    fs.readFileSync(path.join(homedir, ".gitsol", "config.json")).toString()
   );
   if (!config.registered) {
-    console.log(
-      chalk.red("You are not registered. Please register to continue.")
-    );
-    await create();
-    await unlock();
-    return;
+    throw new Error("You are not registered. Please register to continue.");
   }
   let keypair;
   let password;
@@ -37,7 +32,7 @@ export async function unlock(): Promise<any> {
   }
 
   const encryptedAccount = fs
-    .readFileSync(path.join(__dirname, "..", ".gitsol", "account"))
+    .readFileSync(path.join(homedir, ".gitsol", "account"))
     .toString();
   try {
     const accountConfig = JSON.parse(
