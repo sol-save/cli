@@ -52,7 +52,8 @@ export async function init(keyPair: Keypair) {
       ],
     },
   ]);
-  console.log(chalk.green("Creating project..."));
+  console.clear();
+  console.log(chalk.grey("🪐 creating project..."));
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
     new NodeWallet(keyPair),
@@ -77,5 +78,6 @@ export async function init(keyPair: Keypair) {
     path.join(__dirname, "..", ".gitsol", "apps.json"),
     JSON.stringify(apps)
   );
-  console.log(chalk.green("Project created!"));
+  console.clear();
+  console.log(chalk.green("project created on chain!"));
 }

@@ -52,7 +52,7 @@ export async function push(keyPair: Keypair) {
   );
 
   console.clear();
-  console.log(chalk.grey("creating commit..."));
+  console.log(chalk.grey("uploading files to IPFS..."));
   const appPath = path.resolve("./");
   const zipPath = path.join(__dirname, "..", ".gitsol", `${timestamp}.zip`);
   await zip(`${appPath}/.git`, zipPath);
@@ -60,7 +60,7 @@ export async function push(keyPair: Keypair) {
   const client = makeStorageClient(config.storagekey);
   const cid = await client.put(files);
   console.clear();
-  console.log(chalk.grey("pushing commit..."));
+  console.log(chalk.grey("pushing changes on chain..."));
   const tx = await createCommit(
     keyPair,
     program,
@@ -68,5 +68,5 @@ export async function push(keyPair: Keypair) {
     `${cid}/${timestamp}.zip`
   );
   console.clear();
-  console.log(chalk.green("commit pushed at ", tx));
+  console.log(chalk.green("commits pushed at ", tx));
 }

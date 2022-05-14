@@ -24,27 +24,21 @@ export const createRepo = async (
     program.programId
   );
 
-  try {
-    const tx = await program.methods
-      .createRepo({
-        name,
-        bio: description,
-        socialLinks: [""],
-        remote: "",
-        avatar: "",
-      })
-      .accounts({
-        repoAccount: repoPDA,
-        authority: authority.publicKey,
-        userAccount: userPDA,
-        systemProgram: SystemProgram.programId,
-      })
-      .signers([authority])
-      .rpc();
-    console.log("Created repo: ", tx);
-    return repo_id
-  } catch (error) {
-    console.log(chalk.red("🔴 Error in create-repo.ts:  ", error));
-    throw new Error("failed");
-  }
+  const tx = await program.methods
+    .createRepo({
+      name,
+      bio: description,
+      socialLinks: [""],
+      remote: "",
+      avatar: "",
+    })
+    .accounts({
+      repoAccount: repoPDA,
+      authority: authority.publicKey,
+      userAccount: userPDA,
+      systemProgram: SystemProgram.programId,
+    })
+    .signers([authority])
+    .rpc();
+  return repo_id;
 };

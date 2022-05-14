@@ -46,10 +46,12 @@ export async function clone(keyPair: Keypair) {
     provider
   );
   const repos = await getRepoLists(keyPair, program);
+  console.clear();
   const { chosenId } = await inquirer.prompt([
     {
       type: "list",
       name: "chosenId",
+      message: "Choose a repo to clone",
       choices: repos.map((repo) => {
         return {
           name: repo.name,
@@ -58,8 +60,9 @@ export async function clone(keyPair: Keypair) {
       }),
     },
   ]);
+  console.clear();
+  console.log(chalk.gray("initialising git..."));
   exec("git init", (error: any, stdout: any, stderr: any) => {});
-
   const apps = JSON.parse(
     fs
       .readFileSync(path.join(__dirname, "..", ".gitsol", "apps.json"))
@@ -71,4 +74,6 @@ export async function clone(keyPair: Keypair) {
     JSON.stringify(apps)
   );
   await pull(keyPair);
+  console.clear();
+  console.log(chalk.green("successfully cloned!"));
 }
