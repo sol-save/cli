@@ -1,4 +1,4 @@
-import { fund, unlock, init, push, pull, clone } from "./commands";
+import { fund, unlock, init, push, pull, clone, commit } from "./commands";
 export async function handler(command: string, args: string[]) {
   const keyPair = await unlock();
   switch (command) {
@@ -24,6 +24,10 @@ export async function handler(command: string, args: string[]) {
     }
     case "clone": {
       await clone(keyPair);
+      break;
+    }
+    case "commit": {
+      await commit(args);
       break;
     }
   }
