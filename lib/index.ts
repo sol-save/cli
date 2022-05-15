@@ -5,7 +5,7 @@ import { handler } from "./handler";
 import path from "path";
 import chalk from "chalk";
 import fs from "fs";
-import { supportedCommands, create } from "./commands";
+import { create } from "./commands";
 const args = process.argv.slice(2);
 
 console.clear();
@@ -54,15 +54,9 @@ export const logo = `
       console.log(logo);
       console.log(chalk.green("Welcome to GitSol!"));
       console.log(chalk.blue(`Your gitsol account is ${config.account}`));
-      console.log(chalk.grey("To see all commands, run : gitsol --help"));
       process.exit(0);
     }
-    if (supportedCommands.includes(args[0])) {
-      await handler(args[0], args.slice(1));
-    } else {
-      console.log(chalk.red(`Command ${args[0]} not found.`));
-      console.log(chalk.red("You can run: gitsol --help"));
-    }
+    await handler(args[0], args.slice(1));
   } catch (err: any) {
     console.log(
       chalk.red(`🚨 error while carrying out command: ${err.message}`)
