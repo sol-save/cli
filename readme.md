@@ -63,14 +63,14 @@ npx gitsol
 ```
 
 ## Usage 💡
-In this section you can write some popular examples about how you can interact with the project. It's advisable to write some code here.
+![Usage demo](https://github.com/anoushk1234/Git-Obsidian/blob/main/usagedemogitsol.gif?raw=true)
 
 ## Examples 🖍
 ```
-gitsol init
-gitsol push
-gitsol pull
-gitsol clone
+gitsol init - init repo on chain
+gitsol push - push code on chain
+gitsol pull - pull chain from chain
+gitsol clone - clone repo
 ```
 
 ## Documentation 📄
