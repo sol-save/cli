@@ -61,6 +61,7 @@ export const logo = `
     console.log(
       chalk.red(`🚨 error while carrying out command: ${err.message}`)
     );
+    
     process.exit(1);
   }
 })();
