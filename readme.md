@@ -33,14 +33,14 @@
 <!-- - [API 👩‍💻](#api-) -->
 - [Demo 🎮](#demo-)
 - [Tech Used ⚙️](#tech-used-)
-- [Repos 📚]($repos-)
+- [Repos 📚](#repos-)
 <!-- - [Contributing 🍰](#contributing-) -->
 - [Maintainers 👷](#maintainers-)
 - [License ⚖️](#license-️)
 
 
 ## What and Why📓
-In the 4th century the [Library of Alexandria](https://en.wikipedia.org/wiki/Library_of_Alexandria) was considered one of the largest stores of knowledge, despite its grandeur it was burnt to a crisp. Today code has the same value as as books and literature and storing it on a centralised platform owned by a monopoly is at best a risky choice but unfortunately the only choice, that is until now.
+In the 4th century the [Library of Alexandria](https://en.wikipedia.org/wiki/Library_of_Alexandria) was considered one of the largest stores of knowledge, despite its grandeur it was burnt to a crisp. Today code has the same value as books and literature and storing it on a centralised platform owned by a monopoly is at best a risky choice but unfortunately the only choice, that is until now.
 
  - ### Presenting Gitsol ✨ 
    An onchain version control tool that handles not just version control but also storage while giving you full ownership of   the code and reliability more than a nokia. We use Solana to store version history of your code meaning txns are fast and   history is tamperproof. We're using web3.storage to store code versions on ipfs/filecoin to ensure storage is fast and reliable with encrypted storage coming soon.
