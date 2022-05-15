@@ -81,7 +81,7 @@ You have a small project or you'll like to share the API of your project ? This 
 
 ## Demo 🎮
 Click on the video below to watch <br>
-[![Demo video](https://img.youtube.com/vi/pk66JHNMfVY/0.jpg)](https://www.youtube.com/watch?v=pk66JHNMfVY)
+[![Demo video](https://img.youtube.com/vi/kcx-St4rBi0/0.jpg)](https://youtu.be/kcx-St4rBi0)
 <!-- ## Contributing 🍰
 Please make sure to read the [Contributing Guide]() before making a pull request.
 
