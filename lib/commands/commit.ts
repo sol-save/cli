@@ -5,7 +5,7 @@ export async function commit(args: any) {
     `git commit ${args.join(" ")}`,
     (error: any, stdout: any, stderr: any) => {
       if (error) {
-        throw error;
+        console.log(error.message);
       }
       console.log(stdout);
       console.log(stderr);
