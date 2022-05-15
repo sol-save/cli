@@ -9,6 +9,8 @@ export const supportedCommands: string[] = [
   "push",
   "pull",
   "clone",
+  "commit",
+  "add",
 ];
 export * from "./register";
 export * from "./unlock";
@@ -18,3 +20,4 @@ export * from "./push";
 export * from "./pull";
 export * from "./clone";
 export * from "./commit";
+export * from "./add";
