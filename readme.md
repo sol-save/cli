@@ -63,7 +63,7 @@ npx gitsol
 ```
 
 ## Usage 💡
-![Usage demo](https://github.com/anoushk1234/Git-Obsidian/blob/main/usagedemogitsol.gif?raw=true)
+![Usage demo](https://github.com/sol-save/test-repo/blob/main/usagedemogitsol.gif?raw=true)
 
 ## Examples 🖍
 ```
