@@ -69,7 +69,7 @@ npx gitsol
 ```
 gitsol init - init repo on chain
 gitsol push - push code on chain
-gitsol pull - pull chain from chain
+gitsol pull - pull changes from chain
 gitsol clone - clone repo
 ```
 
