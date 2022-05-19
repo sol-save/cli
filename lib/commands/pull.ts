@@ -1,5 +1,5 @@
 import path from "path";
-const http = require("https"); // or 'https' for https:// URLs
+const http = require("https");
 const fs = require("fs-extra");
 const unzipper = require("unzipper");
 import { exec } from "child_process";

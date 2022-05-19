@@ -1,7 +1,5 @@
 import path from "path";
-const http = require("https"); // or 'https' for https:// URLs
 const fs = require("fs-extra");
-const unzipper = require("unzipper");
 import { exec } from "child_process";
 import chalk from "chalk";
 import * as anchor from "@project-serum/anchor";

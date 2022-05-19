@@ -9,7 +9,6 @@ import path from "path";
 import { fund } from "./fund";
 
 import * as anchor from "@project-serum/anchor";
-// const idl:GitSol = require("../utils/idl.json");
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
@@ -114,7 +113,6 @@ export async function create() {
   socials = socials.split(",");
   const avatar = `https://github.com/${github}.png`;
 
-  // TODO; contract integration
   const provider = new anchor.AnchorProvider(
     new Connection(clusterApiUrl("devnet")),
     new NodeWallet(keyPair),

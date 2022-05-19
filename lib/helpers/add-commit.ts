@@ -22,7 +22,6 @@ export const addCommit = async (
     ],
     program.programId
   );
-  //   console.log("repo pda ", repoPDA.toBase58(), repoBump);
   try {
     const tx = await program.methods
       .addCommit({

@@ -6,7 +6,6 @@ import fs from "fs";
 import { createRepo } from "../helpers/create-repo";
 const { exec } = require("child_process");
 import * as anchor from "@project-serum/anchor";
-// const idl:GitSol = require("../utils/idl.json");
 import { idl } from "../utils/idl";
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { Program } from "@project-serum/anchor";
