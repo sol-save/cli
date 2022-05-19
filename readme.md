@@ -24,6 +24,7 @@
 
 **Content**
 
+- [what and why 📓](#what-and-why-)
 - [Features ✨](#features-)
 - [Install 🐙](#install-)
 - [Usage 💡](#usage-)
@@ -31,15 +32,26 @@
 - [Documentation 📄](#documentation-)
 <!-- - [API 👩‍💻](#api-) -->
 - [Demo 🎮](#demo-)
-- [Tech Used ⚙️](#tech=used-)
+- [Tech Used ⚙️](#tech-used-)
+- [Repos 📚](#repos-)
 <!-- - [Contributing 🍰](#contributing-) -->
 - [Maintainers 👷](#maintainers-)
 - [License ⚖️](#license-️)
 
+
+## What and Why📓
+In the 4th century the [Library of Alexandria](https://en.wikipedia.org/wiki/Library_of_Alexandria) was considered one of the largest stores of knowledge, despite its grandeur it was burnt to a crisp. Today code has the same value as books and literature and storing it on a centralised platform owned by a monopoly is at best a risky choice but unfortunately the only choice, that is until now.
+
+ - ### Presenting Gitsol ✨ 
+   An onchain version control tool that handles not just version control but also storage while giving you full ownership of   the code and reliability more than a nokia. We use Solana to store version history of your code meaning txns are fast and   history is tamperproof. We're using web3.storage to store code versions on ipfs/filecoin to ensure storage is fast and reliable with encrypted storage coming soon.
+  
+
 ## Features ✨
-* Feature 1.
-* Feature 2.
-* ...
+* Push code changes to ipfs and filecoin.
+* Have complete ownership over your code with the reliability of filecoin.
+* Tamperproof code history
+* Faster thans you can center a div, built to Solana
+* Completely free to use and we dont sell you ads or harvest your data
 
 ## Install 🐙
 ```
@@ -51,14 +63,14 @@ npx gitsol
 ```
 
 ## Usage 💡
-In this section you can write some popular examples about how you can interact with the project. It's advisable to write some code here.
+![Usage demo](https://github.com/sol-save/test-repo/blob/main/usagedemogitsol.gif?raw=true)
 
 ## Examples 🖍
 ```
-gitsol init
-gitsol push
-gitsol pull
-gitsol clone
+gitsol init - init repo on chain
+gitsol push - push code on chain
+gitsol pull - pull changes from chain
+gitsol clone - clone repo
 ```
 
 ## Documentation 📄
@@ -69,7 +81,7 @@ You have a small project or you'll like to share the API of your project ? This 
 
 ## Demo 🎮
 Click on the video below to watch <br>
-[![Demo video](https://img.youtube.com/vi/pk66JHNMfVY/0.jpg)](https://www.youtube.com/watch?v=pk66JHNMfVY)
+[![Demo video](https://img.youtube.com/vi/kcx-St4rBi0/0.jpg)](https://youtu.be/kcx-St4rBi0)
 <!-- ## Contributing 🍰
 Please make sure to read the [Contributing Guide]() before making a pull request.
 
@@ -77,11 +89,16 @@ Please make sure to read the [Contributing Guide]() before making a pull request
 Thank you to all the people who already contributed to this project! -->
 
 ## Tech Used ⚙️
- - [Anchor](https://project-serum.github.io/anchor/)
- - [web3.storage](https://web3.storage/)
- - [Next.js](https://nextjs.org/)
- - [Chakra UI](https://chakra-ui.com/)
+ - [Anchor](https://project-serum.github.io/anchor/) - Solana contracts to store version history
+ - [web3.storage](https://web3.storage/) - To store code files on ipfs/filecoin
+ - [Next.js](https://nextjs.org/) - For our landing page, interactive UI coming soon
+ - [Chakra UI](https://chakra-ui.com/) - Styling
 
+## Repos 📚
+ - [Contract](https://github.com/sol-save/git-sol)
+ - [cli](https://github.com/sol-save/cli/)
+ - [landing page](https://github.com/sol-save/site)
+ 
 ## Maintainers 👷
 <table>
   <tr>
